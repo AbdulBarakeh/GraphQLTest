@@ -17,8 +17,8 @@ namespace GraphQLTest
             builder.Services.AddSwaggerGen();
             builder.Services.AddGraphQLServer().AddQueryType<Query>().AddProjections().AddFiltering().AddSorting();
 
-            var con = builder.Configuration.GetConnectionString("TempDb");
-            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(con));
+            var con = builder.Configuration.GetConnectionString("TempDb2");
+            builder.Services.AddDbContext<AabdtestContext>(options => options.UseSqlServer(con));
 
             var app = builder.Build();
 
@@ -43,7 +43,6 @@ namespace GraphQLTest
             app.MapControllers();
             app.MapGraphQL("/graphql");
 
-            app.MapFamilyEndpoints();
 
             app.Run();
         }
